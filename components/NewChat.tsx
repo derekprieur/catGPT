@@ -8,20 +8,20 @@ import { db } from '../firebase'
 
 function NewChat() {
   const router = useRouter()
-  const {data: session} = useSession()
+  const { data: session } = useSession()
   const createNewChat = async () => {
     const doc = await addDoc(collection(db, 'users', session?.user?.email!, 'chats'), {
       userId: session?.user?.email!,
       createdAt: serverTimestamp()
     })
-    
+
     console.log('1')
     router.push(`/chat/${doc.id}`)
     console.log('2')
   }
   return (
     <div onClick={createNewChat} className='border-gray-700 border chatRow'>
-      <PlusIcon className='h-4 w-4'/>
+      <PlusIcon className='h-4 w-4' />
       <p>New Chat</p>
     </div>
   )
