@@ -20,6 +20,8 @@ function ChatRow({ id }: Props) {
     const [messages] = useCollection(
         collection(db, 'users', session?.user?.email!, 'chats', id, 'messages'))
 
+    console.log(messages, 'messages')
+
     useEffect(() => {
         if (!pathname) return
 
